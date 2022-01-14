@@ -1,0 +1,61 @@
+{
+    "nombre":"Douglas Plazas",
+    "identificacion":"1075256993",
+    "tipo_documento":"Cedula ciudadania",
+    "data": [
+        {
+            "num_plan": "18974568",
+            "valor": "500000",
+            "vencimiento": "17/03/2021",
+            "vigencia": "1"
+        },
+        {
+            "num_plan": "95216875",
+            "valor": "2000000",
+            "vencimiento": "1/03/2021",
+            "vigencia": "1"
+        },
+        {
+            "num_plan": "51684965",
+            "valor": "24560",
+            "vencimiento": "19/03/2021",
+            "vigencia": "0"
+        },
+        {
+            "num_plan": "68749621",
+            "valor": "489513",
+            "vencimiento": "15/03/2021",
+            "vigencia": "1"
+        },
+        {
+            "num_plan": "13654987",
+            "valor": "468792",
+            "vencimiento": "30/03/2021",
+            "vigencia": "1"
+        },
+        {
+            "num_plan": "48713526",
+            "valor": "13259",
+            "vencimiento": "1/04/2021",
+            "vigencia": "0"
+        },
+        {
+            "num_plan": "13687953",
+            "valor": "9999",
+            "vencimiento": "20/04/2021",
+            "vigencia": "0"
+        },
+        {
+            "num_plan": "95216875",
+            "valor": "2000000",
+            "vencimiento": "1/03/2021",
+            "vigencia": "1"
+        },
+        {
+            "num_plan": "95216875",
+            "valor": "2000000",
+            "vencimiento": "1/03/2021",
+            "vigencia": "1"
+        }
+    ]
+}

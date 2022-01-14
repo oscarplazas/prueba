@@ -1,0 +1,156 @@
+<br>
+<div class="row">
+    <div class="col-md-4">
+        <div class="card">
+            <div class="card-header bg-primary text-white">
+                <h4><b>Consulta</b></h4>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col text-center">
+                        <img src="dist/img/logoAxa.png" alt="">
+                    </div>
+                </div>
+                <br>
+                <hr>
+                <form>
+                    <div class="form-group">
+                        <label for="">Tipo Documento</label>
+                        <select class="form-control form-control-sm" id=""
+                            data-ng-change="conini.validarConsultaPagos(0)"
+                            data-ng-model="conini.seleccion.tipo_documento">
+                            <option value="" disabled>Seleccione...</option>
+                            <option value="{{tipodocumento.TpCodigo}}"
+                                data-ng-repeat="tipodocumento in conini.listaTipoDocumentos">
+                                {{tipodocumento.TpCodigo}}.
+                                {{tipodocumento.TpNombre}}</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="">Indetificación</label>
+                        <input type="number" class="form-control form-control-sm"
+                            data-ng-change="conini.validarConsultaPagos(0)"
+                            data-ng-model="conini.seleccion.identificacion">
+                    </div>
+                </form>
+            </div>
+            <div class="card-footer">
+                <div class="row">
+                    <div class="col-md-12">
+                        <button type="button" class="btn btn-primary btn-sm" disabled id="btnConsulta"
+                            data-ng-click="conini.consultarPagosCliente()">
+                            Consultar
+                        </button>
+                        <button type="button" class="btn btn-danger btn-sm" id="btnConsulta"
+                            data-ng-click="conini.consultarData()">
+                            Consultar data
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-8" data-ng-if="conini.visualizarPagos == true">
+        <div class="card">
+            <div class="card-header  bg-danger text-white">
+                <h4><b>Lista pagos pendientes</b></h4>
+            </div>
+            <div class="card-body">
+                <div class="card">
+                    <div class="card-header">
+                        <h5>Datos del cliente</h5>
+                    </div>
+                    <div class="card-body" data-ng-if="conini.listarPagosCliente != null">
+                        Tipo documento: {{conini.listarPagosCliente.tipo_documento}} <br>
+                        Identificación: {{conini.listarPagosCliente.identificacion}} <br>
+                        Nombre: {{conini.listarPagosCliente.nombre}} <br>
+                    </div>
+                    <div class="card-body" data-ng-if="conini.listarPagosCliente == null">
+                        <small>No se encontro un cliente con el tipo de documento e identificación ingresada</small>
+                    </div>
+                </div>
+                <br>
+                <div class="card">
+                    <div class="card-header">
+                        <div class="row">
+                            <div class="col-auto">
+                                <h5>Lista de pagos</h5>
+                            </div>
+                            <div class="col-auto">
+                                <input type="text" class="form-control form-control-sm"
+                                    data-ng-model="conini.filtroPago" placeholder="Buscar...">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body" style="overflow: auto; height: 30vh;"
+                        data-ng-if="conini.listarPagosCliente.data != null">
+                        <div class="card" data-ng-if="pagos.PaVigencia == 1"
+                            data-ng-repeat="pagos in conini.listarPagosCliente.data | filter:conini.filtroPago">
+                            <div class="card-body">
+                                Plan número: {{pagos.PaNumPlan}} <br>
+                                Valor: {{pagos.PaValor | currency:"$":0}} <br>
+                                Vencimiento: {{pagos.PaVencimiento | date:'dd/MM/yyyy'}} <br>
+                                Vigencia: {{pagos.PaVigencia}} <br>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body" data-ng-if="conini.listarPagosCliente.data == null">
+                        <small>No se encontraron pagos con el tipo de documento e identificación ingresada</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-8" data-ng-if="conini.visualizarPagosData == true">
+        <div class="card">
+            <div class="card-header  bg-danger text-white">
+                <h4><b>Lista pagos pendientes</b></h4>
+            </div>
+            <div class="card-body">
+                <div class="card">
+                    <div class="card-header">
+                        <h5>Datos del cliente</h5>
+                    </div>
+                    <div class="card-body" data-ng-if="conini.listarPagosData.tipo_documento != ''">
+                        Tipo documento: {{conini.listarPagosData.tipo_documento}} <br>
+                        Identificación: {{conini.listarPagosData.identificacion}} <br>
+                        Nombre: {{conini.listarPagosData.nombre}} <br>
+                    </div>
+                    <div class="card-body" data-ng-if="conini.listarPagosData.tipo_documento == ''">
+                        <small>No se encontro un cliente con el tipo de documento e identificación ingresada</small>
+                    </div>
+                </div>
+                <br>
+                <div class="card">
+                    <div class="card-header">
+                        <div class="row">
+                            <div class="col-auto">
+                                <h5>Lista de pagos</h5>
+                            </div>
+                            <div class="col-auto">
+                                <input type="text" class="form-control form-control-sm"
+                                    data-ng-model="conini.filtroPago" placeholder="Buscar...">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body" style="overflow: auto; height: 30vh;"
+                        data-ng-if="conini.listarPagosData.data != null">
+                        <div class="card" data-ng-if="pagos.vigencia == 1"
+                            data-ng-repeat="pagos in conini.listarPagosData.data | filter:conini.filtroPago">
+                            <div class="card-body">
+                                Plan número: {{pagos.num_plan}} <br>
+                                Valor: {{pagos.valor | currency:"$":0}} <br>
+                                Vencimiento: {{pagos.vencimiento | date:'dd/MM/yyyy'}} <br>
+                                Vigencia: {{pagos.vigencia}} <br>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body" data-ng-if="conini.listarPagosData.data == null">
+                        <small>No se encontraron pagos con el tipo de documento e identificación ingresada</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
